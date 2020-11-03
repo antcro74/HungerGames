@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Hanging;
@@ -100,12 +101,18 @@ public class GameListener implements Listener {
 		Location l = player.getLocation();
 		for (ItemStack i : inv.getContents()) {
 			if (i != null && i.getType() != Material.AIR) {
+				if (i.containsEnchantment(Enchantment.BINDING_CURSE) || i.containsEnchantment(Enchantment.VANISHING_CURSE)) {
+					continue;
+				}
 				assert l.getWorld() != null;
 				l.getWorld().dropItemNaturally(l, i).setPersistent(false);
 			}
 		}
 		for (ItemStack i : inv.getArmorContents()) {
 			if (i != null && i.getType() != Material.AIR) {
+				if (i.containsEnchantment(Enchantment.BINDING_CURSE) || i.containsEnchantment(Enchantment.VANISHING_CURSE)) {
+					continue;
+				}
 				assert l.getWorld() != null;
 				l.getWorld().dropItemNaturally(l, i).setPersistent(false);
 			}
