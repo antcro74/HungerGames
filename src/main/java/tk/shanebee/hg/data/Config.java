@@ -35,6 +35,8 @@ public class Config {
     public static int teleportEndTime;
     public static List<String> bonusBlockTypes;
     public static boolean hideNametags;
+    public static int gameStart;
+    public static boolean tpBack;
 
     //Team info
     public static boolean team_showTeamNames;
@@ -107,7 +109,9 @@ public class Config {
 
     private void loadConfig() {
         debug = config.getBoolean("settings.debug");
-        spawnmobs = config.getBoolean("settings.spawn-mobs");
+        gameStart = config.getInt("settings.game-start");
+        tpBack = config.getBoolean("settings.tp-back");
+        spawnmobs = config.getBoolean("settings.spawn-mobs") ;
         spawnmobsinterval = config.getInt("settings.spawn-mobs-interval") * 20;
         bossbar = config.getBoolean("settings.bossbar-countdown");
         trackingstickuses = config.getInt("settings.trackingstick-uses");
